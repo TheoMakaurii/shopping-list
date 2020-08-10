@@ -21,36 +21,50 @@ $("#js-shopping-list-form").submit(e => {
 
 
     $(".shopping-list").append(newItem);
- 
+
+    function deleteButton(){
+
+    $(".shopping-item-delete").click(function(){
+         
+        $(this).parent().parent().remove();
+        console.log($(this).parent())
+        console.log("test");
+        // $(this).newItem.remove();
+      });
+      
+    }
+    $(deleteButton)
   });
+
+  
+  
 
 
 }
 
 $(addItem);
 
-// function checkButton(){
+function checkButton(){
 
-//   $(".shopping-item-toggle").click(function(){
+  $(".shopping-item-toggle").click(function(){
 
-//     //let targetItem= $(this).parent().parent();
+    //let targetItem= $(this).parent().parent();
     
-//     $(this).parent().parent().addClass('.shopping-item__checked')
-//     console.log($(this))
-//   })
-
-// }
-// $(checkButton);
-
-function deleteButton(){
-
-  $(".shopping-item-delete").click(function(){
-   
-    // $(this).parent().parent().remove();
-    // console.log($(this).parent())
-    console.log("test");
-  });
+    $("#shopping-item").toggleClass('.shopping-item__checked')
+    console.log($(this))
+  })
 
 }
+$(checkButton);
 
-$(deleteButton)
+function deleteOriginalItems(){
+
+  $(".shopping-item-delete").click(function(){
+         
+    $(this).parent().parent().remove();
+    console.log($(this).parent())
+    console.log("test");
+    });
+      
+}
+$(deleteOriginalItems);
