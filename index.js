@@ -1,6 +1,6 @@
 'use strict';
 
-function checkOriginalItems(){
+function checkItems(){
 
   $(".shopping-item-toggle").click(function(){
    
@@ -8,9 +8,9 @@ function checkOriginalItems(){
 
   });
 }
-$(checkOriginalItems);
+$(checkItems);
 
-function deleteOriginalItems(){
+function deleteItems(){
   $(".shopping-item-delete").click(function(){
          
     $(this).parent().parent().remove();
@@ -18,7 +18,7 @@ function deleteOriginalItems(){
   
   });    
 }
-$(deleteOriginalItems);
+$(deleteItems);
 
 function addItem() {
 
@@ -39,20 +39,10 @@ $("#js-shopping-list-form").submit(e => {
     $(".shopping-list").append(newItem);
     $("#shopping-list-entry").val('');
 
-    function deleteButton(){
-      $(".shopping-item-delete").click(function(){ 
-        $(this).parent().parent().remove();
-      });
-    }
-    $(deleteButton);
-
-    function checkButton(){
-      $(".shopping-item-toggle").click(function(){
-        $(this).closest('li').find('.shopping-item').toggleClass('shopping-item__checked');
-      });
-    }
-    $(checkButton);
+    $(checkItems);
+    $(deleteItems);
   });
+ 
 }
 $(addItem);
 
