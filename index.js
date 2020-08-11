@@ -6,6 +6,7 @@ function addItem() {
 $("#js-shopping-list-form").submit(e => {
 
     e.preventDefault();
+    
 
     let newItem=`<li><span class = "shopping-item"> ${$("#shopping-list-entry").val()} </span>
     <div class="shopping-item-controls">
@@ -21,10 +22,11 @@ $("#js-shopping-list-form").submit(e => {
 
 
     $(".shopping-list").append(newItem);
+    $("#shopping-list-entry").val('');
 
     function deleteButton(){
 
-    $(".shopping-item-delete").click(function(){
+      $(".shopping-item-delete").click(function(){
          
         $(this).parent().parent().remove();
         console.log($(this).parent())
@@ -34,28 +36,39 @@ $("#js-shopping-list-form").submit(e => {
       
     }
     $(deleteButton)
+
+    function checkButton(){
+
+      $(".shopping-item-toggle").click(function(){
+       
+    
+        
+        $(this).closest('li').toggleClass('shopping-item__checked');
+        
+     
+      })
+    
+    }
+    $(checkButton);
   });
-
-  
-  
-
 
 }
 
 $(addItem);
 
-function checkButton(){
+function checkOriginalItems(){
 
   $(".shopping-item-toggle").click(function(){
+   
 
-    //let targetItem= $(this).parent().parent();
     
-    $("#shopping-item").toggleClass('.shopping-item__checked')
-    console.log($(this))
-  })
+    $(this).closest('li').toggleClass('shopping-item__checked');
+ 
+ 
+  });
 
 }
-$(checkButton);
+$(checkOriginalItems);
 
 function deleteOriginalItems(){
 
@@ -63,7 +76,7 @@ function deleteOriginalItems(){
          
     $(this).parent().parent().remove();
     console.log($(this).parent())
-    console.log("test");
+  
     });
       
 }
